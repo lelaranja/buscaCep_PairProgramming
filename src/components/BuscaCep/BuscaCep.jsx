@@ -8,15 +8,10 @@ const BuscaCep = () => {
     const [cep, setCep] = useState('')
   
     async function handleRequisicao() {
-      const response = await fetch(`https://viacep.com.br/ws/${cep}/json`, {headers})
+      const response = await fetch(`https://viacep.com.br/ws/${cep}/json`)
       const json = await response.json()
       setInformacoes(json)
     }
-
-    const headers = {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
-      }
 
     return (
       <div>
