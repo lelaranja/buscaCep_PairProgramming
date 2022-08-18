@@ -1,15 +1,10 @@
 import './App.css'
-import Busca from './components/Busca/BUsca'
-import Button from './components/Button/Button'
+import BuscaCep from './components/BuscaCep/BuscaCep'
 
 function App() {
-
-  
-
   return (
     <div className="App">
-      <Busca/>
-      <Button texto="Buscar"/>
+    <BuscaCep/>
     </div>
   )
 }

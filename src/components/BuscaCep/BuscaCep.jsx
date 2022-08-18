@@ -1,18 +1,31 @@
-const apiCep = () => {
+import React from "react"
+import { useState } from "react"
+import Input from "../Input/Input"
+import Label from "../Label/Label"
+
+const BuscaCep = () => {
     const [informacoes, setInformacoes] = useState()
+    const [cep, setCep] = useState('')
   
     async function handleRequisicao() {
-      const response = await fetch(`https://viacep.com.br/ws/${}/json`)
+      const response = await fetch(`https://viacep.com.br/ws/${cep}/json`, {headers})
       const json = await response.json()
       setInformacoes(json)
     }
+
+    const headers = {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      }
+
     return (
       <div>
+        <Label texto="Insira seu CEP:"/>
+        <Input tipo="text" valor={cep} onChange={e=>setCep(e.target.value)}/>
         <button onClick={handleRequisicao}>Buscar</button>
         <h3>{informacoes ? informacoes.cep : ''}</h3>
-        <img src={informacoes ? informacoes.picture.large : ''} alt="" />
       </div>
     )
   }
 
-  export default apiCep
+  export default BuscaCep
